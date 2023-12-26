@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MarksActivity">
+
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/marks_toolbar"
+        style="@style/Widget.MaterialComponents.Toolbar.Primary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title="Marks"
+        app:menu="@menu/marks_toolbar"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/white"
+        android:backgroundTint="@color/tint"
+        app:titleCentered="true" />
+
+    <ListView
+        android:id="@+id/marks_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/nav_view"
+        android:layout_below="@+id/marks_toolbar"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="0dp" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:itemActiveIndicatorStyle="@style/App.Custom.Indicator"
+        android:background="@color/tint"
+        app:itemBackground="@color/tint"
+        app:itemIconTint="@drawable/selector"
+        app:itemTextColor="@drawable/selector"
+        app:menu="@menu/menu_navigation" />
+
+</RelativeLayout>

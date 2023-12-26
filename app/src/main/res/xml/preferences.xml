@@ -1,0 +1,30 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--below line is to create preference category-->
+    <PreferenceCategory
+        app:key="notifications_category"
+        app:title="Notifications">
+        <ListPreference
+            android:defaultValue="1"
+            android:dialogTitle="Choose view"
+            android:entries="@array/login_view"
+            android:entryValues="@array/login_view"
+            android:key="@string/login_view_home"
+            android:summary="Choose which view shows on load"
+            android:title="Initial view" />
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="lode"
+            android:summary="Count lode as 31"
+            android:title="Lode" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="User">
+        <Preference
+            android:layout="@layout/login_preference_layout"
+            app:key="log_out"
+            app:title="Log out"/>
+    </PreferenceCategory>
+
+</PreferenceScreen>
