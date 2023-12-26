@@ -70,10 +70,20 @@
     <string name="exam_mark">Exam\'s mark</string>
     <string name="save_button_title">SAVE</string>
     <string name="lode">Lode</string>
-    <string name="login_view_home">Home</string>
-    <string name="login_view_exams">Exams</string>
+    <string name="login_view_home">"0"</string>
+    <string name="login_view_exams">"1"</string>
+    <string name="login_view_home_display">Home</string>
+    <string name="login_view_exams_display">Exams</string>
+    <string name="view_preference">view_preference</string>
+    <string name="not_available">Not available</string>
+    <string name="emptycontent">emptyContent</string>
     <string-array name="login_view">
         <item>@string/login_view_home</item>
         <item>@string/login_view_exams</item>
+    </string-array>
+
+    <string-array name="login_view_display">
+        <item>@string/login_view_home_display</item>
+        <item>@string/login_view_exams_display</item>
     </string-array>
 </resources>

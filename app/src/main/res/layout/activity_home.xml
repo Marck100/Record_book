@@ -166,6 +166,7 @@
         android:layout_below="@+id/textView5"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
+        android:listSelector="@android:color/transparent"
         android:layout_marginStart="0dp"
         android:layout_marginTop="0dp"
         android:layout_marginEnd="0dp" />

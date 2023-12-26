@@ -2,6 +2,7 @@ package com.example.studentsrecordbook;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.preference.PreferenceManager;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
         dbHandler = new DBHandler(MainActivity.this);
 
+        SharedPreferences settingsPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences preferences = getSharedPreferences("loginData", MODE_PRIVATE);
         if (preferences.contains("matricola") && preferences.contains("password")) {
             String matricola = preferences.getString("matricola", "");
@@ -39,9 +41,15 @@ public class MainActivity extends AppCompatActivity {
 
             Optional<User> user = dbHandler.loadUser(matricola, password);
             user.ifPresent(u -> {
-                Intent homeActivity = new Intent(MainActivity.this, HomeActivity.class);
-                startActivity(homeActivity);
-                return;
+
+                String defaultInitialView = settingsPreferences.getString("view_preference", "");
+                if (defaultInitialView.equals(getString(R.string.login_view_exams))) {
+                    Intent examsActivity = new Intent(MainActivity.this, MarksActivity.class);
+                    startActivity(examsActivity);
+                } else {
+                    Intent homeActivity = new Intent(MainActivity.this, HomeActivity.class);
+                    startActivity(homeActivity);
+                }
             });
         }
 

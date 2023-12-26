@@ -8,9 +8,9 @@
         <ListPreference
             android:defaultValue="1"
             android:dialogTitle="Choose view"
-            android:entries="@array/login_view"
+            android:entries="@array/login_view_display"
             android:entryValues="@array/login_view"
-            android:key="@string/login_view_home"
+            android:key="view_preference"
             android:summary="Choose which view shows on load"
             android:title="Initial view" />
         <SwitchPreference

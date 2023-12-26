@@ -2,6 +2,7 @@ package com.example.studentsrecordbook;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.preference.PreferenceManager;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -33,6 +34,8 @@ public class HomeActivity extends AppCompatActivity {
     ListView examListView;
     TextView seeMoreLabel;
 
+    SharedPreferences settingsPreferences;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,10 +61,15 @@ public class HomeActivity extends AppCompatActivity {
 
         };
 
+        settingsPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+
         examListView = findViewById(R.id.marks_list);
 
         exams = dbHandler.loadUserExams(user.getMatricola());
-        exams = exams.subList(0, 2);
+        if (exams.size() > 2) {
+            exams = exams.subList(0, 2);
+        }
+
 
         ExamAdapter examAdapter = new ExamAdapter(this, new ArrayList<>(exams));
         examListView = findViewById(R.id.marks_list);
@@ -100,11 +108,30 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void computeStatistics() {
+
+        if (exams.size() == 0) {
+            meanLabel.setText(R.string.not_available);
+            weightedMeanLabel.setText(R.string.not_available);
+            expectedMarkLabel.setText(R.string.not_available);
+
+            return;
+        }
+
+        boolean countLodeGreater = settingsPreferences.getBoolean("lode", true);
+
         List<Integer> marks = new ArrayList<>();
         List<Integer> credits = new ArrayList<>();
 
         for (Exam exam: exams) {
-            marks.add(exam.getMark());
+            if (!countLodeGreater) {
+                int mark = exam.getMark();
+                if (mark == 31) {
+                    mark = 30;
+                }
+                marks.add(mark);
+            } else {
+                marks.add(exam.getMark());
+            }
             credits.add(exam.getCfu());
         }
         // Mean

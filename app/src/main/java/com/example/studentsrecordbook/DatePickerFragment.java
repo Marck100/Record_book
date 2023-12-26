@@ -26,7 +26,7 @@ public class DatePickerFragment extends DialogFragment {
         int day = c.get(Calendar.DAY_OF_MONTH);
 
 
-        return new DatePickerDialog(requireContext(), listener, year, month, day);
+        return new DatePickerDialog(requireContext(), R.style.DialogTheme, listener, year, month, day);
     }
 
 }

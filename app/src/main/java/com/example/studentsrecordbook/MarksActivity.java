@@ -65,6 +65,7 @@ public class MarksActivity extends AppCompatActivity implements UpdateListener {
         examListView = findViewById(R.id.marks_list);
         examListView.setAdapter(examAdapter);
         examListView.setDivider(null);
+        examListView.setEmptyView(findViewById(R.id.emptyImageView));
 
         topToolbar = findViewById(R.id.marks_toolbar);
 

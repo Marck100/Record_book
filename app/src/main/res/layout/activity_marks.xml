@@ -25,8 +25,18 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/nav_view"
         android:layout_below="@+id/marks_toolbar"
+        android:listSelector="@android:color/transparent"
         android:layout_marginTop="0dp"
         android:layout_marginBottom="0dp" />
+    <ImageView
+        android:id="@+id/emptyImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/nav_view"
+        android:src="@drawable/empty_illustration"
+        android:layout_margin="80dp"
+        android:layout_below="@+id/marks_toolbar"
+        android:contentDescription="@string/emptycontent" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/nav_view"
