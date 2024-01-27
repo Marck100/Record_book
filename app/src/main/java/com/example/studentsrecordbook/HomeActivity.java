@@ -22,7 +22,7 @@ import java.util.Locale;
 import java.util.Optional;
 import java.util.stream.Stream;
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity implements ExamAdapterListener {
 
     DBHandler dbHandler;
     User user;
@@ -71,7 +71,7 @@ public class HomeActivity extends AppCompatActivity {
         }
 
 
-        ExamAdapter examAdapter = new ExamAdapter(this, new ArrayList<>(exams));
+        ExamAdapter examAdapter = new ExamAdapter(this, new ArrayList<>(exams), false, this);
         examListView = findViewById(R.id.marks_list);
         examListView.setAdapter(examAdapter);
         examListView.setDivider(null);
@@ -157,5 +157,9 @@ public class HomeActivity extends AppCompatActivity {
         weightedMeanLabel.setText(weightedMeanLiteral);
         expectedMarkLabel.setText(expectedMarkLiteral);
 
+    }
+
+    @Override
+    public void examDeletionRequested(int position) {
     }
 }

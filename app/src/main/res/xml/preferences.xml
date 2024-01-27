@@ -3,8 +3,8 @@
 
     <!--below line is to create preference category-->
     <PreferenceCategory
-        app:key="notifications_category"
-        app:title="Notifications">
+        app:key="app_category"
+        app:title="App">
         <ListPreference
             android:defaultValue="1"
             android:dialogTitle="Choose view"

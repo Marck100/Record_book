@@ -16,6 +16,8 @@
         <item name="colorAccent">@color/tint</item>
         <item name="android:colorControlActivated">@color/tint</item>
         <!-- Customize your theme here. -->
+
+        <item name="android:windowBackground">@color/white</item>
     </style>
 
     <style name="DialogTheme" parent="Theme.AppCompat.Light.Dialog">

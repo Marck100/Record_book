@@ -24,7 +24,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Optional;
 
-public class MarksActivity extends AppCompatActivity implements UpdateListener {
+public class MarksActivity extends AppCompatActivity implements UpdateListener, ExamAdapterListener {
 
     MaterialToolbar topToolbar;
     DBHandler dbHandler;
@@ -61,7 +61,7 @@ public class MarksActivity extends AppCompatActivity implements UpdateListener {
 
         exams = dbHandler.loadUserExams(user.getMatricola());
 
-        ExamAdapter examAdapter = new ExamAdapter(this, new ArrayList<>(exams));
+        ExamAdapter examAdapter = new ExamAdapter(this, new ArrayList<>(exams), true, this);
         examListView = findViewById(R.id.marks_list);
         examListView.setAdapter(examAdapter);
         examListView.setDivider(null);
@@ -117,10 +117,22 @@ public class MarksActivity extends AppCompatActivity implements UpdateListener {
     @Override
     public void callback(View view) {
         exams = dbHandler.loadUserExams(user.getMatricola());
-        ExamAdapter examAdapter = new ExamAdapter(this, new ArrayList<>(exams));
+        ExamAdapter examAdapter = new ExamAdapter(this, new ArrayList<>(exams), true, this);
         examListView.setAdapter(examAdapter);
         examListView.invalidateViews();
         examListView.refreshDrawableState();
 
+    }
+
+    @Override
+    public void examDeletionRequested(int position) {
+        Exam exam = exams.get(position);
+        Bundle items = new Bundle();
+        items.putSerializable("user", user);
+        items.putSerializable("exam", exam);
+        ExamDialogFragment dialog = new ExamDialogFragment(MarksActivity.this);
+        dialog.setArguments(items);
+
+        dialog.show(getSupportFragmentManager(), "exam_alert");
     }
 }

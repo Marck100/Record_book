@@ -38,7 +38,7 @@ public class ExamDialogFragment extends DialogFragment {
         builder.setTitle(exam.getName());
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy", Locale.ITALY);
         String dateLiteral = format.format(exam.getDate().getTime());
-        builder.setMessage(dateLiteral);
+        builder.setMessage("Are you sure you want to delete this exam? You can't undo this action.");
         builder.setNeutralButton("BACK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {

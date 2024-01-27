@@ -41,6 +41,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
                     editor.apply();
 
                     Intent loginIntent = new Intent(activity, MainActivity.class);
+                    loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     activity.startActivity(loginIntent);
                 }
 

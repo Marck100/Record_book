@@ -77,6 +77,7 @@
     <string name="view_preference">view_preference</string>
     <string name="not_available">Not available</string>
     <string name="emptycontent">emptyContent</string>
+    <string name="exams_item">Exams</string>
     <string-array name="login_view">
         <item>@string/login_view_home</item>
         <item>@string/login_view_exams</item>

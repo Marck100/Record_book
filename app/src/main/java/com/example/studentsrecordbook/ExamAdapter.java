@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,8 +17,14 @@ import java.util.Locale;
 
 public class ExamAdapter extends ArrayAdapter<Exam> {
 
-    public ExamAdapter(@NonNull Context context, ArrayList<Exam> exams) {
+    Boolean showBin;
+    ExamAdapterListener listener;
+
+    public ExamAdapter(@NonNull Context context, ArrayList<Exam> exams, Boolean showBin, ExamAdapterListener listener) {
         super(context, 0, exams);
+
+        this.showBin = showBin;
+        this.listener = listener;
     }
 
     @NonNull
@@ -44,6 +51,10 @@ public class ExamAdapter extends ArrayAdapter<Exam> {
         TextView nameLabel = convertView.findViewById(R.id.examNameLabel);
         TextView dateLabel = convertView.findViewById(R.id.examDateLabel);
         TextView markLabel = convertView.findViewById(R.id.examMarkLabel);
+        ImageButton imageButton = convertView.findViewById(R.id.imageButton);
+
+        imageButton.setVisibility(showBin ? View.VISIBLE : View.GONE);
+        imageButton.setOnClickListener(listener -> this.listener.examDeletionRequested(position));
 
         nameLabel.setText(exam.getName());
         dateLabel.setText(finalLiteral);
