@@ -88,20 +88,6 @@ public class MarksActivity extends AppCompatActivity implements UpdateListener, 
             return false;
         });
 
-        examListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Exam exam = exams.get(i);
-                Bundle items = new Bundle();
-                items.putSerializable("user", user);
-                items.putSerializable("exam", exam);
-                ExamDialogFragment dialog = new ExamDialogFragment(MarksActivity.this);
-                dialog.setArguments(items);
-
-                dialog.show(getSupportFragmentManager(), "exam_alert");
-            }
-        });
-
         topToolbar.setOnMenuItemClickListener(menuItem -> {
             if (menuItem.getItemId() == R.id.action_add) {
 
